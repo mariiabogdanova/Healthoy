@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 /**
- * Generated class for the WorkoutPage page.
+ * Generated class for the WorkoutSelectionPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -10,20 +10,20 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-workout',
-  templateUrl: 'workout.html',
+  selector: 'page-workout-selection',
+  templateUrl: 'workout-selection.html',
 })
-export class WorkoutPage {
-
+export class WorkoutSelectionPage {
+  workout: any;
+  
+ 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.workout = navParams.get('workout') || 5;
   }
+  
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad WorkoutPage');
+    console.log('ionViewDidLoad WorkoutSelectionPage');
   }
-  openItem(workout: any) {
-    this.navCtrl.push('WorkoutSelectionPage', {
-      item: workout
-    });
-  }
+
 }
