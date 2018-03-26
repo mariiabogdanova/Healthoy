@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
 /**
  * Generated class for the WorkoutSelectionPage page.
  *
@@ -15,10 +15,14 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class WorkoutSelectionPage {
   workout: any;
-  
- 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.workout = navParams.get('workout') || 5;
+  video: any = {
+    url: 'https://www.youtube.com/embed/MLleDRkSuvk',
+    title: 'Awesome video'
+};
+trustedVideoUrl: SafeResourceUrl;
+  constructor(public navCtrl: NavController, public navParams: NavParams,private domSanitizer: DomSanitizer) {
+    this.trustedVideoUrl = this.domSanitizer.bypassSecurityTrustResourceUrl(this.video.url);
+    this.workout = navParams.get('workout') ;
   }
   
 
