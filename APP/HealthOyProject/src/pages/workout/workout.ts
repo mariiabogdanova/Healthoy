@@ -23,7 +23,7 @@ export class WorkoutPage {
   }
   openItem(workout: any) {
     this.navCtrl.push('WorkoutSelectionPage', {
-      item: workout
+      workout: workout
     });
   }
 }
