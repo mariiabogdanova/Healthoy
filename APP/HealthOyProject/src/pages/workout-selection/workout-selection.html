@@ -1,8 +1,8 @@
 <!--
-  Generated template for the WorkoutSelectionPage page.
+Generated template for the WorkoutSelectionPage page.
 
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
+See http://ionicframework.com/docs/components/#navigation for more info on
+Ionic pages and navigation.
 -->
 <ion-header>
 
@@ -16,17 +16,39 @@
 <ion-content padding>
 
 
-<ion-card>
-  
+  <ion-card>
+
     <ion-item>
-     
-      <h2>Abs workout-{{ video?.title }} -{{workout}} Selection</h2>
-     </ion-item>
-      <iframe width="100%" height="315" [src]="trustedVideoUrl" frameborder="0" allowfullscreen></iframe>
+      <h2>Abs workout-{{ video?.title }} - {{workout}} Selection</h2>
+    </ion-item>
+
+    <iframe width="100%" height="315" [src]="trustedVideoUrl" frameborder="0" allowfullscreen></iframe>
     <ion-card-content>
       <p>This is a workout video This is a workout video This is a workout videoThis is a workout video This is a workout video</p>
     </ion-card-content>
-  
+
+
+
+    <ion-grid>
+      <ion-row>
+        <ion-col col-4 align-self-center text-center>
+          <button ion-button outline>Light</button>
+        </ion-col>
+
+        <ion-col col-4 align-self-center text-center>
+          <button ion-button outline color="secondary">Medium</button>
+        </ion-col>
+
+        <ion-col col-4 align-self-center text-center>
+          <button ion-button outline color="danger">Hard</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </ion-card>
+
+  <ion-card>
+
   </ion-card>
 
 </ion-content>
