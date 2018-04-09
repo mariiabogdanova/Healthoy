@@ -9,7 +9,7 @@ import { SchedulepagePage } from './schedulepage';
   ],
   imports: [
     IonicPageModule.forChild(SchedulepagePage),
-    ChartModule.forRoot(HighCharts)
+   
     
   ],
 })
