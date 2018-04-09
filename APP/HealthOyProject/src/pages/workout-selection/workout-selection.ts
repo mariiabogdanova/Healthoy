@@ -22,6 +22,8 @@ export class WorkoutSelectionPage {
   vid_Data: Observable<any>;
   display_data:any=[];
   done_video:any=[];
+  done_data:any;
+  DONE_COLLECTION:any=[];
   video: any = {
     url: 'https://www.youtube.com/embed/MLleDRkSuvk',
     title: 'Awesome video'
@@ -65,8 +67,27 @@ if(!this.done_video){
 test(){
   console.log("asdfasfda");
 }
-videoclicked(id){
-  this.done_video.push(id);
+videoclicked(video){
+  console.log(video);
+  this.done_video.push(video.id);
+this.done_data={
+  id:video.id,
+  video_title:video.video_title,
+created:new Date()
+}
+
+
+ this.DONE_COLLECTION.push(this.done_data);
+ this.storage.set('DONE_DATA',this.DONE_COLLECTION);
+
+
+
+ this.storage.get('DONE_DATA').then((val) => {
+  console.log('done', val);
+
+});
+
+
 
   this.storage.set('DONE',this.done_video);
   console.log("video is clicked"+this.done_video);
