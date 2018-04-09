@@ -21,7 +21,7 @@ $sql = "SELECT * FROM workoutVideos where video_category='$cat'";
 		
 		$alldata=array();
 		while ($row = mysqli_fetch_assoc($result)) {
-                     array_push($alldata, mb_convert_encoding($row, 'UTF-8', 'UTF-8')
+                     array_push($alldata,$row);
             );
                     
              
