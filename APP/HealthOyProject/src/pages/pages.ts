@@ -7,5 +7,5 @@ export const MainPage = 'TabsPage';
 
 // The initial root pages for our tabs (remove if not using tabs)
 export const Tab1Root = 'WorkoutPage';
-export const Tab2Root = 'SearchPage';
+export const Tab2Root = 'SchedulepagePage';
 export const Tab3Root = 'SettingsPage';
