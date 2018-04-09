@@ -10,15 +10,26 @@ $password = 'WA7oRTrHLUB5qZUa';
 $db_name = 'opisk_t6ishe01';
 
 $mysql = @mysqli_connect($host, $username, $password, $db_name );
+$cat=$_POST["cat"];
+$sql = "SELECT * FROM workoutVideos where video_category='$cat'";
 
-$sql = "SELECT * FROM workoutVideos";
-
-    if (!$mysql) {
-        echo "Error connecting to MySQL: " . mysqli_connect_error($mysql);
-        die;
-    }
-    else{
-        $result = mysqli_query($mysql, $sql);
-        print_r($result);
-    }
+		$result = mysqli_query($mysql, $sql);
+       if(!$result){
+		$output['RESULT'] = 'FAILED';     
+	}else{	
+		
+		$alldata=array();
+		while ($row = mysqli_fetch_assoc($result)) {
+                     array_push($alldata, mb_convert_encoding($row, 'UTF-8', 'UTF-8')
+            );
+                    
+             
+            }
+		$output['RESULT'] = 'SUCCESS';     
+		$output['DATA'] =$alldata;     
+	}
+     //  echo("2222");
+  print_r(json_encode($output));
+  //echo json_last_error_msg();
+	
 ?>
