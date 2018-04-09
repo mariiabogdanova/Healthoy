@@ -23,6 +23,12 @@
       <h2>{{video.video_title}} -{{workout}} Selection</h2>
      </ion-item>
       <iframe width="100%" height="315" [src]="trusturl(video.video_url)" frameborder="0" allowfullscreen></iframe>
+      
+      
+      <button (click)="videoclicked(video.id)" ion-item>
+        {{ checkdone(video.id)!= '-1' ? 'DONE' : 'Mark Done' }}
+    
+      </button>
     <ion-card-content>
       <p>This is a workout video This is a workout video This is a workout videoThis is a workout video This is a workout video</p>
     </ion-card-content>
