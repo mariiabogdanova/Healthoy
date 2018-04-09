@@ -76,7 +76,9 @@ this.done_data={
 created:new Date()
 }
 
-
+openModal(){
+  //from here
+}
  this.DONE_COLLECTION.push(this.done_data);
  this.storage.set('DONE_DATA',this.DONE_COLLECTION);
 
