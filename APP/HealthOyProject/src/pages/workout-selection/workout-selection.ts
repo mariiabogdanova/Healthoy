@@ -98,5 +98,9 @@ created:new Date()
 
     
   }
+  openModal(){
+
+    // modal code goes here
+  }
 
 }
