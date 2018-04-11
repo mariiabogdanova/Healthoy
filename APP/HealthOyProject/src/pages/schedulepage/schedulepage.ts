@@ -19,6 +19,7 @@ import { Storage } from '@ionic/storage';
 export class SchedulepagePage {
 days:any=[];
 total:any=[];
+data_cat:any=[];
 DATA:any;
   constructor(public navCtrl: NavController, public navParams: NavParams, private storage: Storage) {
 
@@ -31,9 +32,78 @@ DATA:any;
         console.log('done1', this.DATA);
         this.preparedata();
         });
+
+        this.storage.get('DONE_CATEGORY').then((val) => {
+            this.data_cat=val;  
+            console.log('done_category', this.data_cat);
+            this.preparedataCat();
+             });
   }
   newdate(date:any){
     return(this.days.indexOf(date) >= 0);
+
+  }
+  preparedataCat(){
+      let cat1=0;
+      let cat2=0;
+      let cat4=0;
+      let cat3=0;
+      for(let i=0;i<this.data_cat.length;i++){
+            if(this.data_cat[i]==1){
+                cat1+=1;
+            }else if(this.data_cat[i]==2){
+                cat2+=1;
+            }else if(this.data_cat[i]==3){
+                cat3+=1;
+            }else if(this.data_cat[i]==4){
+                cat4+=1;
+            }
+      }
+    HighCharts.chart('pie_container', {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+        },
+        title: {
+            text: 'Types of workouts done'
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                    style: {
+                        color:'black'
+                    }
+                }
+            }
+        },
+        series: [{
+            name: 'Workout types',
+           
+            data: [ {
+                name: '5 minutes',
+                y: cat1,
+                
+            }, {
+                name: '10 minutes',
+                y: cat2
+            }, {
+                name: '15 minutes',
+                y: cat3
+            }, {
+                name: '20 minutes',
+                y: cat4
+            }]
+        }]
+    });
 
   }
   preparedata(){
@@ -80,51 +150,7 @@ console.log(this.days);
         }]
         });
   
-  HighCharts.chart('pie_container', {
-      chart: {
-          plotBackgroundColor: null,
-          plotBorderWidth: null,
-          plotShadow: false,
-          type: 'pie'
-      },
-      title: {
-          text: 'Types of workouts done'
-      },
-      tooltip: {
-          pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-      },
-      plotOptions: {
-          pie: {
-              allowPointSelect: true,
-              cursor: 'pointer',
-              dataLabels: {
-                  enabled: true,
-                  format: '<b>{point.name}</b>: {point.percentage:.1f} %',
-                  style: {
-                      color:'black'
-                  }
-              }
-          }
-      },
-      series: [{
-          name: 'Workout types',
-         
-          data: [ {
-              name: '5 minutes',
-              y: 24.03,
-              
-          }, {
-              name: '10 minutes',
-              y: 10.38
-          }, {
-              name: '15 minutes',
-              y: 4.77
-          }, {
-              name: '20 minutes',
-              y: 0.91
-          }]
-      }]
-  });
+ 
   }
   ionViewDidLoad(){
 

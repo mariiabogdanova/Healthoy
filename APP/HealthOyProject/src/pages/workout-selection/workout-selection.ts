@@ -24,6 +24,7 @@ export class WorkoutSelectionPage {
   display_data:any=[];
   done_video:any=[];
   done_data:any;
+  done_category:any=[];
   DONE_COLLECTION:any=[];
   video: any = {
     url: 'https://www.youtube.com/embed/MLleDRkSuvk',
@@ -46,6 +47,10 @@ trustedVideoUrl: SafeResourceUrl;
     storage.get('DONE1').then((val) => {
       console.log('done', val);
       this.done_video=val;
+    });
+    storage.get('DONE_CATEGORY').then((val) => {
+      console.log('done', val);
+      this.done_category=val;
     });
     storage.get('DONE_DATA1').then((val) => {
       console.log('done', val);
@@ -82,11 +87,16 @@ if(!this.done_video){
  if(!this.DONE_COLLECTION){
   this.DONE_COLLECTION=[];
   }
- 
+  if(!this.done_category){
+    this.done_category=[];
+    }
  
 
 
   this.done_video.push(video.id);
+  
+  this.done_category.push(video.video_category);
+  this.storage.set('DONE_CATEGORY',this.done_category);
 this.done_data={
   id:video.id,
   video_title:video.video_title,
