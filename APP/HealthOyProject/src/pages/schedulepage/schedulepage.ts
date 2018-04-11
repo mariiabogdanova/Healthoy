@@ -27,25 +27,70 @@ export class SchedulepagePage {
       type: 'line'
       },
       title: {
-      text: 'Fruit Consumption'
+      text: 'Your recent activity'
       },
       xAxis: {
-      categories: ['Apples', 'Bananas', 'Oranges']
+      categories: ['day 1', 'day 2', 'day 3', 'day 4', 'day 5', 'day 6', 'day 7']
       },
       yAxis: {
       title: {
-      text: 'Fruit eaten'
+      text: 'Workouts done'
       }
       },
       series: [{
-      name: 'Jane',
-      data: [1, 0, 4]
-      }, {
-      name: 'John',
-      data: [5, 7, 3]
+      name: 'Your name',
+      data: [1, 0, 4, 5, 2, 2, 1]
       }]
       });
+
+HighCharts.chart('pie_container', {
+    chart: {
+        plotBackgroundColor: null,
+        plotBorderWidth: null,
+        plotShadow: false,
+        type: 'pie'
+    },
+    title: {
+        text: 'Types of workouts done'
+    },
+    tooltip: {
+        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+    },
+    plotOptions: {
+        pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+                enabled: true,
+                format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                style: {
+                    color: (HighCharts.theme && Highharts.theme.contrastTextColor) || 'black'
+                }
+            }
+        }
+    },
+    series: [{
+        name: 'Workout types',
+        colorByPoint: true,
+        data: [ {
+            name: '5 minutes',
+            y: 24.03,
+            
+        }, {
+            name: '10 minutes',
+            y: 10.38
+        }, {
+            name: '15 minutes',
+            y: 4.77
+        }, {
+            name: '20 minutes',
+            y: 0.91
+        }]
+    }]
+});
+
   }
+
 
 }
 
