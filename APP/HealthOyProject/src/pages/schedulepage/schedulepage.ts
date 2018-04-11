@@ -17,85 +17,146 @@ import { Storage } from '@ionic/storage';
   templateUrl: 'schedulepage.html',
 })
 export class SchedulepagePage {
-
+days:any=[];
+total:any=[];
+data_cat:any=[];
+DATA:any;
   constructor(public navCtrl: NavController, public navParams: NavParams, private storage: Storage) {
 
   }
 
+  ionViewWillEnter(){
 
-  ionViewDidLoad(){
+    this.storage.get('DONE_DATA1').then((val) => {
+        this.DATA=val;  
+        console.log('done1', this.DATA);
+        this.preparedata();
+        });
 
-this.storage.get('DONE').then((val) => {
-      console.log('done', val);
-    });
+        this.storage.get('DONE_CATEGORY').then((val) => {
+            this.data_cat=val;  
+            console.log('done_category', this.data_cat);
+            this.preparedataCat();
+             });
+  }
+  newdate(date:any){
+    return(this.days.indexOf(date) >= 0);
 
-
-    HighCharts.chart('container', {
-      chart: {
-      type: 'line'
-      },
-      title: {
-      text: 'Your recent activity'
-      },
-      xAxis: {
-      categories: ['day 1', 'day 2', 'day 3', 'day 4', 'day 5', 'day 6', 'day 7']
-      },
-      yAxis: {
-      title: {
-      text: 'Workouts done'
+  }
+  preparedataCat(){
+      let cat1=0;
+      let cat2=0;
+      let cat4=0;
+      let cat3=0;
+      for(let i=0;i<this.data_cat.length;i++){
+            if(this.data_cat[i]==1){
+                cat1+=1;
+            }else if(this.data_cat[i]==2){
+                cat2+=1;
+            }else if(this.data_cat[i]==3){
+                cat3+=1;
+            }else if(this.data_cat[i]==4){
+                cat4+=1;
+            }
       }
-      },
-      series: [{
-      name: 'Your name',
-      data: [1, 0, 4, 5, 2, 2, 1]
-      }]
-      });
-
-HighCharts.chart('pie_container', {
-    chart: {
-        plotBackgroundColor: null,
-        plotBorderWidth: null,
-        plotShadow: false,
-        type: 'pie'
-    },
-    title: {
-        text: 'Types of workouts done'
-    },
-    tooltip: {
-        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-    },
-    plotOptions: {
-        pie: {
-            allowPointSelect: true,
-            cursor: 'pointer',
-            dataLabels: {
-                enabled: true,
-                format: '<b>{point.name}</b>: {point.percentage:.1f} %',
-                style: {
-                    color: (HighCharts.theme && HighCharts.theme.contrastTextColor) || 'black'
+    HighCharts.chart('pie_container', {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+        },
+        title: {
+            text: 'Types of workouts done'
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                    style: {
+                        color:'black'
+                    }
                 }
             }
-        }
-    },
-    series: [{
-        name: 'Workout types',
-        colorByPoint: true,
-        data: [ {
-            name: '5 minutes',
-            y: 24.03,
-            
-        }, {
-            name: '10 minutes',
-            y: 10.38
-        }, {
-            name: '15 minutes',
-            y: 4.77
-        }, {
-            name: '20 minutes',
-            y: 0.91
+        },
+        series: [{
+            name: 'Workout types',
+           
+            data: [ {
+                name: '5 minutes',
+                y: cat1,
+                
+            }, {
+                name: '10 minutes',
+                y: cat2
+            }, {
+                name: '15 minutes',
+                y: cat3
+            }, {
+                name: '20 minutes',
+                y: cat4
+            }]
         }]
-    }]
-});
+    });
+
+  }
+  preparedata(){
+
+    console.log('done2', this.DATA); 
+    console.log(this.DATA.length);
+    let totaldaycount=0;
+    for(let i=0;i<this.DATA.length;i++){
+//check if already here
+let day=this.DATA[i]['created'];
+day=day.toString();
+day=day.substring(0, 11);
+if(!this.newdate(day)){
+    totaldaycount=1;
+    this.days.push(day);
+}else{
+    totaldaycount+=1;
+    
+    this.total.splice(-1,1);
+    this.total.push(totaldaycount);
+}
+
+
+console.log(this.days);
+}
+    HighCharts.chart('container', {
+        chart: {
+        type: 'line'
+        },
+        title: {
+        text: 'Your recent activity'
+        },
+        xAxis: {
+        categories: this.days
+        },
+        yAxis: {
+        title: {
+        text: 'Workouts done'
+        }
+        },
+        series: [{
+        name: 'Daily workout counts',
+        data: this.total
+        }]
+        });
+  
+ 
+  }
+  ionViewDidLoad(){
+
+
+   
+  
 
   }
 

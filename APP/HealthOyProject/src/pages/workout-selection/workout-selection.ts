@@ -24,6 +24,7 @@ export class WorkoutSelectionPage {
   display_data:any=[];
   done_video:any=[];
   done_data:any;
+  done_category:any=[];
   DONE_COLLECTION:any=[];
   video: any = {
     url: 'https://www.youtube.com/embed/MLleDRkSuvk',
@@ -43,9 +44,18 @@ trustedVideoUrl: SafeResourceUrl;
       console.log('my data: ',this.display_data);
     });
    // this.storage.set('DONE',this.done_video);
-    storage.get('DONE').then((val) => {
+    storage.get('DONE1').then((val) => {
       console.log('done', val);
       this.done_video=val;
+    });
+    storage.get('DONE_CATEGORY').then((val) => {
+      console.log('done', val);
+      this.done_category=val;
+    });
+    storage.get('DONE_DATA1').then((val) => {
+      console.log('done', val);
+      this.DONE_COLLECTION=val;
+     
     });
   }
   hack(val) {
@@ -73,11 +83,20 @@ videoclicked(video){
  
 if(!this.done_video){
  this.done_video=[];
- }else{
  }
+ if(!this.DONE_COLLECTION){
+  this.DONE_COLLECTION=[];
+  }
+  if(!this.done_category){
+    this.done_category=[];
+    }
+ 
 
 
   this.done_video.push(video.id);
+  
+  this.done_category.push(video.video_category);
+  this.storage.set('DONE_CATEGORY',this.done_category);
 this.done_data={
   id:video.id,
   video_title:video.video_title,
@@ -86,18 +105,18 @@ created:new Date()
 
 
  this.DONE_COLLECTION.push(this.done_data);
- this.storage.set('DONE_DATA',this.DONE_COLLECTION);
+ this.storage.set('DONE_DATA1',this.DONE_COLLECTION);
 
 
 
- this.storage.get('DONE_DATA').then((val) => {
+ this.storage.get('DONE_DATA1').then((val) => {
   console.log('done', val);
 
 });
 
 
 
-  this.storage.set('DONE',this.done_video);
+  this.storage.set('DONE1',this.done_video);
   console.log("video is clicked"+this.done_video);
 }
   ionViewDidLoad() {
