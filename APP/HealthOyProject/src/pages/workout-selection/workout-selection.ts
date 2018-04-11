@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
 import { Observable } from 'rxjs/Observable';
 import { HttpClient,HttpParams } from '@angular/common/http';
 import { Storage } from '@ionic/storage';
+import {confetti_modal} from '../pages' ;
 
 /**
  * Generated class for the WorkoutSelectionPage page.
@@ -29,7 +30,7 @@ export class WorkoutSelectionPage {
     title: 'Awesome video'
 };
 trustedVideoUrl: SafeResourceUrl;
-  constructor(public navCtrl: NavController, public navParams: NavParams,private domSanitizer: DomSanitizer,public httpClient: HttpClient,private storage: Storage) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,private domSanitizer: DomSanitizer,public httpClient: HttpClient,private storage: Storage, public modalCtrl: ModalController ) {
     this.trustedVideoUrl = this.domSanitizer.bypassSecurityTrustResourceUrl(this.video.url);
     this.workout = navParams.get('workout') ;
     let params = new HttpParams();
@@ -114,9 +115,9 @@ created:new Date()
 
     
   }
-  openModal(){
-
-    // modal code goes here
+  openModal() {
+    let myModal = this.modalCtrl.create(confetti_modal);
+    myModal.present();
   }
 
 }
