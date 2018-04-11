@@ -42,9 +42,14 @@ trustedVideoUrl: SafeResourceUrl;
       console.log('my data: ',this.display_data);
     });
    // this.storage.set('DONE',this.done_video);
-    storage.get('DONE').then((val) => {
+    storage.get('DONE1').then((val) => {
       console.log('done', val);
       this.done_video=val;
+    });
+    storage.get('DONE_DATA1').then((val) => {
+      console.log('done', val);
+      this.DONE_COLLECTION=val;
+     
     });
   }
   hack(val) {
@@ -72,8 +77,12 @@ videoclicked(video){
  
 if(!this.done_video){
  this.done_video=[];
- }else{
  }
+ if(!this.DONE_COLLECTION){
+  this.DONE_COLLECTION=[];
+  }
+ 
+ 
 
 
   this.done_video.push(video.id);
@@ -85,18 +94,18 @@ created:new Date()
 
 
  this.DONE_COLLECTION.push(this.done_data);
- this.storage.set('DONE_DATA',this.DONE_COLLECTION);
+ this.storage.set('DONE_DATA1',this.DONE_COLLECTION);
 
 
 
- this.storage.get('DONE_DATA').then((val) => {
+ this.storage.get('DONE_DATA1').then((val) => {
   console.log('done', val);
 
 });
 
 
 
-  this.storage.set('DONE',this.done_video);
+  this.storage.set('DONE1',this.done_video);
   console.log("video is clicked"+this.done_video);
 }
   ionViewDidLoad() {
