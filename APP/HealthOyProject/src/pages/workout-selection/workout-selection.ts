@@ -69,6 +69,13 @@ test(){
 }
 videoclicked(video){
   console.log(video);
+ 
+if(!this.done_video){
+ this.done_video=[];
+ }else{
+ }
+
+
   this.done_video.push(video.id);
 this.done_data={
   id:video.id,

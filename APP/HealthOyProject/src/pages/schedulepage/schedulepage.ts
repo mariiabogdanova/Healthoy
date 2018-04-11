@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import * as HighCharts from 'highcharts';
+import { Storage } from '@ionic/storage';
 
 
 /**
@@ -17,11 +18,18 @@ import * as HighCharts from 'highcharts';
 })
 export class SchedulepagePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private storage: Storage) {
+
   }
 
 
   ionViewDidLoad(){
+
+this.storage.get('DONE').then((val) => {
+      console.log('done', val);
+    });
+
+
     HighCharts.chart('container', {
       chart: {
       type: 'line'
@@ -64,7 +72,7 @@ HighCharts.chart('pie_container', {
                 enabled: true,
                 format: '<b>{point.name}</b>: {point.percentage:.1f} %',
                 style: {
-                    color: (HighCharts.theme && Highharts.theme.contrastTextColor) || 'black'
+                    color: (HighCharts.theme && HighCharts.theme.contrastTextColor) || 'black'
                 }
             }
         }
