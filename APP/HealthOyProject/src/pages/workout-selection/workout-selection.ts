@@ -112,12 +112,16 @@ created:new Date()
  this.storage.get('DONE_DATA1').then((val) => {
   console.log('done', val);
 
+  this.openModal();
+
 });
 
 
 
   this.storage.set('DONE1',this.done_video);
   console.log("video is clicked"+this.done_video);
+
+  
 }
   ionViewDidLoad() {
     console.log('ionViewDidLoad WorkoutSelectionPage');
