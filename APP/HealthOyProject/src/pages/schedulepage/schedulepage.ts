@@ -2,6 +2,10 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import * as HighCharts from 'highcharts';
 import { Storage } from '@ionic/storage';
+import { Screenshot } from '@ionic-native/screenshot';
+import { SocialSharing } from '@ionic-native/social-sharing';
+
+
 
 
 /**
@@ -21,9 +25,12 @@ days:any=[];
 total:any=[];
 data_cat:any=[];
 DATA:any;
-  constructor(public navCtrl: NavController, public navParams: NavParams, private storage: Storage) {
+screen: any;
+state: boolean = false;
+  constructor(public navCtrl: NavController, public navParams: NavParams, private storage: Storage, private screenshot: Screenshot, private socialSharing: SocialSharing) {
 
   }
+
 
   ionViewWillEnter(){
 
@@ -155,11 +162,78 @@ console.log(this.days);
   ionViewDidLoad(){
 
 
-   
-  
 
+}
+
+
+
+  reset() {
+    var self = this;
+    setTimeout(function(){ 
+      self.state = false;
+    }, 1000);
   }
+
+  screenShot() {
+      console.log(this.screenshot) 
+       this.screenshot.URI(80).then(res => {
+    this.socialSharing.share("Here are my awesome results with this awesome Heath App!!!",
+                             "",
+                             res.URI,
+                             ""
+                             );
+  }).catch(err => {
+    console.log(err);
+  });
+
+}
+
+
+//     this.screenshot.save('jpg', 80, 'myscreenshot.jpg').then(res => {
+//       this.screen = res.filePath;
+//       this.state = true;
+//       this.reset();
+//     });
+//   }
+
+//     screenShotURI() {
+//     this.screenshot.URI(80).then(res => {
+//       this.screen = res.URI;
+//       this.state = true;
+//       this.reset();
+//     });
+// }
+
+// regularShare(index){
+//   this.socialSharing.share(screenshot, null, null, null);
+// }
+
+
 
 
 }
+
+//   topng(){
+// var chartConfig = {
+    
+// }
+
+
+// var data = {
+//     options: JSON.stringify(chartConfig),
+//     filename: "filename",
+//     type: 'image/png',
+//     async: true
+// };
+
+// var exportUrl = 'http://export.highcharts.com/';
+// $.post(exportUrl, data, function(data) {
+//     var url = exportUrl + data;
+//     window.open(url);
+// });
+
+//   }
+
+
+
 

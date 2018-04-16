@@ -5,6 +5,9 @@
   Ionic pages and navigation.
 -->
 <ion-header>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/offline-exporting.js"></script>
 
   <ion-navbar>
     <ion-title>schedulepage</ion-title>
@@ -13,9 +16,15 @@
 </ion-header>
 
 
-<ion-content padding>
-	<div id="container"></div>
+
+
+	<ion-content padding [class.newBG]="state">
+			<div id="container"></div>
 	<div id="pie_container"></div>
+  <button ion-button outline (click)="screenShot()">Screenshot (PIC)</button>
 
-
+  <img src="{{ screen }}" *ngIf="state">
 </ion-content>
+		
+
+
