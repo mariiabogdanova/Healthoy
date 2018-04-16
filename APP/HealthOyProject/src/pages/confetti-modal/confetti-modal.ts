@@ -21,4 +21,8 @@ export class ConfettiModalPage {
     console.log('ionViewDidLoad ConfettiModalPage');
   }
 
+  closeModal() {
+    this.viewCtrl.dismiss();
+  }
+
 }

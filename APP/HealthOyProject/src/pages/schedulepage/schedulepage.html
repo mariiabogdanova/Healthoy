@@ -1,19 +1,20 @@
 <!--
-  Generated template for the SchedulepagePage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
+Generated template for the SchedulepagePage page.
+See http://ionicframework.com/docs/components/#navigation for more info on
+Ionic pages and navigation.
 -->
 <ion-header>
+
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 <script src="https://code.highcharts.com/modules/offline-exporting.js"></script>
 
+
   <ion-navbar>
     <ion-title>schedulepage</ion-title>
   </ion-navbar>
-
 </ion-header>
+
 
 
 
@@ -24,6 +25,28 @@
   <button ion-button outline (click)="screenShot()">Screenshot (PIC)</button>
 
   <img src="{{ screen }}" *ngIf="state">
+
+<ion-content padding>
+  <ion-grid>
+    <ion-card>
+      <div id="container"></div>
+    </ion-card>
+    <ion-card>
+      <div id="pie_container"></div>
+    </ion-card>
+    <ion-card>
+      <!-- <ion-card-header>
+Profile
+</ion-card-header> -->
+      <ion-list>
+        <button ion-item>
+          <ion-icon name="time" item-start></ion-icon>
+          Past workouts
+        </button>
+      </ion-list>
+    </ion-card>
+  </ion-grid>
+
 </ion-content>
 		
 

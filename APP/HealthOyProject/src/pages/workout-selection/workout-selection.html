@@ -1,38 +1,24 @@
-<!--
-  Generated template for the WorkoutSelectionPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
   <ion-navbar>
-    <ion-title>workoutSelection</ion-title>
+    <ion-title>Group {{workout}} workouts</ion-title>
   </ion-navbar>
-
 </ion-header>
-
 
 <ion-content padding>
 
-
-<ion-card *ngFor="let video of hack(display_data)">
-  
-    <ion-item >
-     
-      <h2>{{video.video_title}} -{{workout}} Selection</h2>
-     </ion-item>
-      <iframe width="100%" height="315" [src]="trusturl(video.video_url)" frameborder="0" allowfullscreen></iframe>
-      
-      
-      <button (click)="videoclicked(video)" ion-item>
-        {{ checkdone(video.id)!= '-1' ? 'DONE' : 'Mark Done' }}
-      </button>
-      <button (click)="openModal()">TESTBTN</button>
+  <ion-card *ngFor="let video of hack(display_data)">
+    <ion-item>
+      <h2>{{video.video_title}} - {{workout}} Selection</h2>
+    </ion-item>
+    <iframe width="100%" height="315" [src]="trusturl(video.video_url)" frameborder="0" allowfullscreen></iframe>
+    <!-- DONE button -->
+    <button (click)="videoclicked(video)" ion-button class="workoutDoneButton">
+      {{ checkdone(video.id)!= '-1' ? 'DONE' : 'Mark Done' }}
+    </button>
+     <button (click)="openModal()">TEST</button> 
     <ion-card-content>
-      <p>This is a workout video This is a workout video This is a workout videoThis is a workout video This is a workout video</p>
+      <p>This is a workout video This is a workout video This is a workout videoThis is a workout
+        video This is a workout video</p>
     </ion-card-content>
-  
   </ion-card>
-
 </ion-content>
