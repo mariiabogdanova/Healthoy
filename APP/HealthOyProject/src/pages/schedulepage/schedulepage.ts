@@ -175,7 +175,7 @@ console.log(this.days);
   }
 
   screenShot() {
-      console.log(this.screenshot) 
+      console.log(this.screenshot);
        this.screenshot.URI(80).then(res => {
     this.socialSharing.share("Here are my awesome results with this awesome Heath App!!!",
                              "",
