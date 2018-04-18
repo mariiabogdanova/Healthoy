@@ -21,8 +21,9 @@ Ionic pages and navigation.
 
 	<ion-content padding [class.newBG]="state">
 			<div id="container"></div>
+  <button ion-button (click)="screenShot()">Share</button>
 	<div id="pie_container"></div>
-  <button ion-button outline (click)="screenShot()">Screenshot (PIC)</button>
+  <button ion-button (click)="screenShot()">Share</button>
 
   <img src="{{ screen }}" *ngIf="state">
 

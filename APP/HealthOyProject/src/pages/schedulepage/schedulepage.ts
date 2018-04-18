@@ -167,12 +167,7 @@ console.log(this.days);
 
 
 
-  reset() {
-    var self = this;
-    setTimeout(function(){ 
-      self.state = false;
-    }, 1000);
-  }
+
 
   screenShot() {
       console.log(this.screenshot);
