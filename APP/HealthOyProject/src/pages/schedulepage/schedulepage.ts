@@ -105,9 +105,6 @@ state: boolean = false;
             }, {
                 name: '15 minutes',
                 y: cat3
-            }, {
-                name: '20 minutes',
-                y: cat4
             }]
         }]
     });

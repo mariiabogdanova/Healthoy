@@ -89,5 +89,6 @@
     <plugin name="phonegap-plugin-push" spec="^1.10.5">
         <variable name="SENDER_ID" value="1008892934921" />
     </plugin>
+    <plugin name="cordova-plugin-email-composer" spec="^0.8.15" />
     <engine name="android" spec="^6.4.0" />
 </widget>
