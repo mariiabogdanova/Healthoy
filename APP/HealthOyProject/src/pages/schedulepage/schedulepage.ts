@@ -105,9 +105,6 @@ state: boolean = false;
             }, {
                 name: '15 minutes',
                 y: cat3
-            }, {
-                name: '20 minutes',
-                y: cat4
             }]
         }]
     });
@@ -167,12 +164,7 @@ console.log(this.days);
 
 
 
-  reset() {
-    var self = this;
-    setTimeout(function(){ 
-      self.state = false;
-    }, 1000);
-  }
+
 
   screenShot() {
       console.log(this.screenshot);
