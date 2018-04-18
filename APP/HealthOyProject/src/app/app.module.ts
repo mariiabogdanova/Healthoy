@@ -16,7 +16,7 @@ import { Api } from '../providers/providers';
 import { MyApp } from './app.component';
 import { Screenshot } from '@ionic-native/screenshot';
 import { SocialSharing } from '@ionic-native/social-sharing';
-
+import { EmailComposer } from '@ionic-native/email-composer';
 // The translate loader needs to know where to load i18n files
 // in Ionic's static asset pipeline.
 export function createTranslateLoader(http: HttpClient) {
@@ -69,7 +69,7 @@ export function provideSettings(storage: Storage) {
     SplashScreen,
     StatusBar,
     Screenshot,
-    SocialSharing,Push, 
+    SocialSharing,Push, EmailComposer,
     { provide: Settings, useFactory: provideSettings, deps: [Storage] },
     // Keep this to enable Ionic's runtime error handling during development
     { provide: ErrorHandler, useClass: IonicErrorHandler }
