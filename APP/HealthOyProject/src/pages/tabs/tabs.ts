@@ -27,7 +27,7 @@ key:any="okok1";
     public navCtrl: NavController, public alertCtrl: AlertController, public translateService: TranslateService,public push: Push, 
      public statusBar: StatusBar,public platform: Platform,public httpClient: HttpClient) {
    
-       this.showAlert("asdfasdf");
+    //   this.showAlert("asdfasdf");
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
@@ -54,12 +54,13 @@ key:any="okok1";
       console.log('my data: ',this.device_data);
     });
 
-    let alert = this.alertCtrl.create({
+   /* let alert = this.alertCtrl.create({
       title: 'New Friend!',
       subTitle: msg,
       buttons: ['OK']
     });
     alert.present();
+  */
   }
 
 
@@ -86,11 +87,6 @@ key:any="okok1";
     pushObject.on('registration').subscribe((data: any) => {
       console.log('device token -> ' + data.registrationId);
       this.showAlert( data.registrationId);
-
-      let topic = "topics/videos" 
-      pushObject.subscribe(topic).then((res:any) => {
-          console.log("subscribed to topic: ", res);
-      });
 
 
       //TODO - send device token to server
