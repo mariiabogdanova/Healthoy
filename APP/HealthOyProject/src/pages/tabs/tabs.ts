@@ -86,6 +86,13 @@ key:any="okok1";
     pushObject.on('registration').subscribe((data: any) => {
       console.log('device token -> ' + data.registrationId);
       this.showAlert( data.registrationId);
+
+      let topic = "topics/videos" 
+      pushObject.subscribe(topic).then((res:any) => {
+          console.log("subscribed to topic: ", res);
+      });
+
+
       //TODO - send device token to server
     });
 
