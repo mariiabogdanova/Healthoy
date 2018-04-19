@@ -126,6 +126,7 @@ day=day.substring(0, 11);
 if(!this.newdate(day)){
     totaldaycount=1;
     this.days.push(day);
+    this.total.push(totaldaycount);    
 }else{
     totaldaycount+=1;
     
