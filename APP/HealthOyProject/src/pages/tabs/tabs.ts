@@ -27,7 +27,7 @@ key:any="okok1";
     public navCtrl: NavController, public alertCtrl: AlertController, public translateService: TranslateService,public push: Push, 
      public statusBar: StatusBar,public platform: Platform,public httpClient: HttpClient) {
    
-    //   this.showAlert("asdfasdf");
+    //ioni   this.showAlert("asdfasdf");
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
