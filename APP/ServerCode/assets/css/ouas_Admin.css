@@ -1,0 +1,179 @@
+.header {
+	background: #808080;
+	height: 60px;
+	padding: 10px;
+
+}
+.welcomeBlock {
+	background: white;
+	height: 90px;
+	padding: 5px;
+	border-bottom: 20px solid #808080;
+}
+.oragne_text_header {
+	font-size: 30px;
+	font-weight: bold;
+	padding: 10px;
+}
+.menus{
+	background: #808080;
+	color:white;
+	font-size: 20px;
+	margin-left: 0px;
+	margin-right: 0px;
+	border-top:5px solid white;
+	border-bottom-left-radius: 20px;
+	min-height: 900px;
+}
+.contentArea{
+	background: #F0F0F0;
+	color:gray;
+	font-size: 14px;
+	margin-left: 0px;
+	margin-right: 0px;
+	border-top:5px solid white;
+	border-left:5px solid white;
+	border-bottom-right-radius: 20px;
+	min-height: 900px;
+	height: 100%;
+	padding:20px;
+	border-right: 1px solid #E8E8E8;
+	
+}
+.contentBlock{
+	padding: 0px;
+}
+.MainMenu{
+	
+	color:white;
+	cursor: pointer;
+	font-weight: normal;
+	font-size: 16px;
+	padding-top: 15px;
+	 text-transform: uppercase;
+}
+.SubMenu{
+	padding-left:20px;
+}
+.SubMenu {
+	color:#ccc !important;
+	cursor: pointer;
+	font-weight: normal;
+	font-size: 14px;
+	 text-transform: uppercase;
+	
+}
+.SubMenu a{
+	color:#ccc !important;
+	cursor: pointer;
+	margin-left:5px;
+}
+.SubMenu a:hover,SubMenu :hover,.SubMenu a.active{
+	color:#fff !important;
+	cursor: pointer;
+	font-weight: bold;
+	
+}
+.loading {
+	background: url(../images/waiting.gif) no-repeat center center;
+	height: 100px;
+	width: 100px;
+	position: fixed;
+	z-index: 3100;
+	left: 50%;
+	top: 40%;
+	margin: -25px 0 0 -25px;
+}
+.modal-backdrop {
+    opacity: 0.7 !important;
+}
+#add_teacher,#manage_groups,#Analytics_teacher_group,#manage_students,#Analytics_student,#manage_news,#Add_polls,#Newsletter_Anaytics{
+	font-size: 10;
+	width:100%;
+}
+label{
+	font-size: 13px;
+}
+.col-form-label{
+	    padding: 10px;
+    text-align: right;
+}
+.input-group{
+	margin:2px;
+	
+}
+.centered{
+	text-align: center;
+	margin: auto;
+}
+.student_btn{
+	    margin-top: 4px;
+}
+.dataTables_wrapper {
+	margin-top:10px;
+}
+.container{
+	max-width:1300px!important;
+}
+.highcharts-credits{
+	display: none!important;
+}
+
+.contactTitle{
+	color: black;
+    font-weight: bold;
+}
+.contactInfo{
+	color: grey;
+    font-weight: bold;
+}
+#contact_information_here{
+	
+	    min-height: 100px;
+    background-color: white;
+    text-align: left;
+    padding: 20px;
+}
+
+@media (max-width: 800px) {
+	
+	.PollAREA{
+		
+		padding-left: 0px;
+		
+    margin-left: -15px;
+    padding-right: 15px!important;
+    margin-top: 15px;
+	}
+	#MainContent {
+		
+		margin-top:0px;
+	}
+	.welcomemessage{
+		width:100% !important;
+	}
+	.MAIN{
+		 width: 100%;
+    padding-right: 15px !important;
+		
+	}   
+}
+@media (min-width: 801px) {
+	#MainContent {
+		
+		margin-top:400px;
+	}
+}
+
+
+	.equalHeightRow{
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
+  flex-wrap: wrap;
+}
+.equalHeightRow > [class*='col-'] {
+  display: flex;
+  flex-direction: column;
+}
