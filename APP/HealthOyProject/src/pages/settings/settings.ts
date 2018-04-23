@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { LocalNotifications } from '@ionic-native/local-notifications';
 import { Settings } from '../../providers/providers';
 
 /**
@@ -22,7 +22,7 @@ export class SettingsPage {
   settingsReady = false;
 
   form: FormGroup;
-
+  healthtips_notifications:any;
   profileSettings = {
     page: 'profile',
     pageTitleKey: 'SETTINGS_PAGE_PROFILE'
@@ -31,14 +31,17 @@ export class SettingsPage {
   page: string = 'main';
   pageTitleKey: string = 'SETTINGS_TITLE';
   pageTitle: string;
+  workout_notifications:boolean=false;
 
   subSettings: any = SettingsPage;
-
+  myDate:any;
+  myDate2:any;
   constructor(public navCtrl: NavController,
     public settings: Settings,
     public formBuilder: FormBuilder,
     public navParams: NavParams,
-    public translate: TranslateService) {
+    public translate: TranslateService,
+    private localNotifications: LocalNotifications) {
   }
 
   _buildForm() {
@@ -61,6 +64,7 @@ export class SettingsPage {
 
     // Watch the form for changes, and
     this.form.valueChanges.subscribe((v) => {
+      console.log(this.form.value);
       this.settings.merge(this.form.value);
     });
   }
@@ -69,7 +73,27 @@ export class SettingsPage {
     // Build an empty form for the template to render
     this.form = this.formBuilder.group({});
   }
+  Sechdule_it(){
 
+    this.localNotifications.schedule({
+      id: 1,
+      title: 'Hello from Health Oy',
+      text: 'Hello this is a reminder from app',
+      data: { mydata: 'My hidden message this is' },
+      trigger: {at: new Date(new Date().getTime() + 5 * 1000)},
+    });
+  }
+
+  Sechdule_it_withtime(time){
+    
+        this.localNotifications.schedule({
+          id: 1,
+          title: 'Hello from Health Oy',
+          text: 'Hello this is a reminder from app',
+          data: { mydata: 'My hidden message this is' },
+          trigger: {at: time},
+        });
+      }
   ionViewWillEnter() {
     // Build an empty form for the template to render
     this.form = this.formBuilder.group({});
@@ -88,7 +112,19 @@ export class SettingsPage {
       this._buildForm();
     });
   }
+  selectTimeWorkout(){
 
+    console.log(this.workout_notifications);
+    console.log(this.myDate);
+    console.log(new Date(this.myDate));
+    this.Sechdule_it();
+    this.Sechdule_it_withtime(new Date(this.myDate));
+  }
+  selectHealthTip(){
+
+    console.log(this.healthtips_notifications);
+    console.log(this.myDate2);
+  }
   ngOnChanges() {
     console.log('Ng All Changes');
   }

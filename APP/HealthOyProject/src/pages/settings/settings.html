@@ -7,25 +7,26 @@
 </ion-header>
 
 <ion-content>
+
 <ion-item>
     <ion-label>Workout notifications</ion-label>
-    <ion-toggle [(ngModel)]="workout_notifications" (change)="selectTimeWorkout()" ></ion-toggle>
+    <ion-toggle [(ngModel)]="workout_notifications"  (ionChange)="selectTimeWorkout()" ></ion-toggle>
   </ion-item>
 
 <ion-item >
   <ion-label>Select time</ion-label>
-  <ion-datetime displayFormat="h:mm" [(ngModel)]="myDate">
+  <ion-datetime displayFormat="hh:mm" [(ngModel)]="myDate">
   </ion-datetime>
 </ion-item>
 
    <ion-item>
     <ion-label>Health tips notifications</ion-label>
-    <ion-toggle [(ngModel)]="healthtips_notifications" (change)="selectTimeTip()"></ion-toggle>
+    <ion-toggle [(ngModel)]="healthtips_notifications" (change)="selectHealthTip()"></ion-toggle>
   </ion-item>
 
 <ion-item>
   <ion-label>Select time</ion-label>
-  <ion-datetime displayFormat="h:mm" [(ngModel)]="myDate2">
+  <ion-datetime displayFormat="hh:mm" [(ngModel)]="myDate2">
   </ion-datetime>
 </ion-item>
       <!-- button ion-item [navPush]="subSettings" [navParams]="profileSettings">
