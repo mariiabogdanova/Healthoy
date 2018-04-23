@@ -25,6 +25,7 @@
     "@ionic-native/core": "4.5.3",
     "@ionic-native/email-composer": "^4.7.0",
     "@ionic-native/http": "^4.6.0",
+    "@ionic-native/local-notifications": "^4.7.0",
     "@ionic-native/push": "^4.7.0",
     "@ionic-native/screenshot": "^4.7.0",
     "@ionic-native/social-sharing": "^4.7.0",
