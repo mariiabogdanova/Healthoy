@@ -5,7 +5,9 @@ import { Storage } from '@ionic/storage';
 import { Screenshot } from '@ionic-native/screenshot';
 import { SocialSharing } from '@ionic-native/social-sharing';
 
-
+import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
+import { Observable } from 'rxjs/Observable';
+import { HttpClient,HttpParams } from '@angular/common/http';
 
 
 /**
@@ -27,8 +29,17 @@ data_cat:any=[];
 DATA:any;
 screen: any;
 state: boolean = false;
-  constructor(public navCtrl: NavController, public navParams: NavParams, private storage: Storage, private screenshot: Screenshot, private socialSharing: SocialSharing) {
-
+display_data:any=[];
+vid_Data: Observable<any>;
+historyData:any=[];
+video: any = {
+    url: 'https://www.youtube.com/embed/MLleDRkSuvk',
+    title: 'Awesome video'
+};
+trustedVideoUrl: SafeResourceUrl;
+  constructor(public navCtrl: NavController, private domSanitizer: DomSanitizer,public navParams: NavParams, private storage: Storage, private screenshot: Screenshot, private socialSharing: SocialSharing,public httpClient: HttpClient) {
+    this.trustedVideoUrl = this.domSanitizer.bypassSecurityTrustResourceUrl(this.video.url);
+   
   }
 
 
@@ -49,6 +60,12 @@ state: boolean = false;
   newdate(date:any){
     return(this.days.indexOf(date) >= 0);
 
+  }
+  hack(val) {
+  console.log("okokokok");
+  console.log(val);
+  
+    return Array.from(val);
   }
   preparedataCat(){
       let cat1=0;
@@ -91,6 +108,8 @@ state: boolean = false;
                     }
                 }
             }
+        }, credits: {
+            enabled: false
         },
         series: [{
             name: 'Workout types',
@@ -118,8 +137,10 @@ state: boolean = false;
     console.log('done2', this.DATA); 
     console.log(this.DATA.length);
     let totaldaycount=0;
+    let past_videos=[];
     for(let i=0;i<this.DATA.length;i++){
 //check if already here
+past_videos.push(this.DATA[i]['id']);
 let day=this.DATA[i]['created'];
 day=day.toString();
 day=day.substring(0, 11);
@@ -136,10 +157,29 @@ if(!this.newdate(day)){
 
 
 console.log(this.days);
+
+let params = new HttpParams();
+console.log("past",past_videos.toString());
+console.log(past_videos);
+params = params.append('ids', past_videos.toString());
+
+this.vid_Data = this.httpClient.get('http://101bits.com/blog/healthoy/get_donevideo.php',{params});
+this.vid_Data
+.subscribe(data => {
+  console.log(this.vid_Data);
+
+  this.display_data=data.DATA;
+  console.log('my data: ',this.display_data);
+});
+
+
 }
     HighCharts.chart('container', {
         chart: {
         type: 'line'
+        },
+        credits: {
+            enabled: false
         },
         title: {
         text: 'Your recent activity'
@@ -167,7 +207,10 @@ console.log(this.days);
 }
 
 
-
+trusturl(val){
+    var trusted=this.domSanitizer.bypassSecurityTrustResourceUrl(val)
+    return(trusted);
+  }
 
 
   screenShot() {
