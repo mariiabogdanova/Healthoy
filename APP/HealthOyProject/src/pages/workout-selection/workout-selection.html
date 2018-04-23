@@ -8,7 +8,7 @@
 
   <ion-card *ngFor="let video of hack(display_data)">
     <ion-item>
-      <h2>{{video.video_title}} - {{workout}} Selection</h2>
+      <h2>{{video.video_title}}</h2>
     </ion-item>
     <iframe width="100%" height="315" [src]="trusturl(video.video_url)" frameborder="0" allowfullscreen></iframe>
     <!-- DONE button -->
@@ -16,9 +16,9 @@
       {{ checkdone(video.id)!= '-1' ? 'DONE' : 'Mark Done' }}
     </button>
      <!-- <button (click)="openModal()">TEST</button>  -->
-<!--     <ion-card-content>
-      <p>This is a workout video This is a workout video This is a workout videoThis is a workout
-        video This is a workout video</p>
-    </ion-card-content> -->
+    <ion-card-content>
+      <p>{{video.video_desc}}</p>
+    </ion-card-content>
+
   </ion-card>
 </ion-content>

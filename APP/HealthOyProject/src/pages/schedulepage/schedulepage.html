@@ -45,6 +45,22 @@ Profile
           Past workouts
         </button>
       </ion-list>
+      <ion-grid>
+        <ion-row *ngFor="let video of hack(display_data)">
+          <ion-col col-5>
+              <iframe width="100%" height="120" [src]="trusturl(video.video_url)" frameborder="0" allowfullscreen></iframe>
+            </ion-col>
+         
+            <ion-col col-7>
+               <h3>{{video.video_title}}</h3>
+               <h4>{{video.video_desc}}</h4>
+              </ion-col>
+           
+            </ion-row>
+          
+          </ion-grid>
+
+
     </ion-card>
   </ion-grid>
 

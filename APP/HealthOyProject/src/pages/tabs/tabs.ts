@@ -37,7 +37,7 @@ key:any="okok1";
     });
     translateService.get(['TAB1_TITLE', 'TAB2_TITLE', 'TAB3_TITLE']).subscribe(values => {
       this.tab1Title = "Workout";// values['TAB1_TITLE'];
-      this.tab2Title = "Schedule";//values['TAB2_TITLE'];
+      this.tab2Title = "Activity";//values['TAB2_TITLE'];
       this.tab3Title = "Profile";//values['TAB3_TITLE'];
     });
   }
