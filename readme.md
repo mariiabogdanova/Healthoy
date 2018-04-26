@@ -27,3 +27,18 @@ Joona Keskitalo, <br/>
 Niran Manandhar,<br/>
 Mariia Bogdanova<br/>
 
+**Functionality**
+Workout: tab in the app that shows 3 category buttons<br/>
+Category: shows user videos in selected length: 5, 10, 15 minutes<br/>
+Select Video: starts to play the embedded Youtube-video<br/>
+Mark as done: stores the video information as done in the local storage<br/>
+Scroll videos: user can scroll videos and select his/her favorite<br/>
+Activity: tab in the app that shows visual presentation of the user activity, how many videos in
+which category has been done.<br/>
+Graphs: displays stored data in visual form with hicharts<br/>
+Share in social media: enables user to share images of his/her progress and charts<br/>
+Past workouts: thumb sized list of done videos<br/>
+Profile: tab in the app that has user profile info and settings button<br/>
+Settings: User settings<br/>
+Toggle notifications: user can choose if they want to receive notifications from the app<br/>
+Set timers: user can set timer to certain notifications such as exercise time.<br/>
