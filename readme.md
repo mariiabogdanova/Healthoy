@@ -16,14 +16,14 @@ social networks.
 
 
 **Built With**
-Ionic - The web framework used
-MySql - Admin Db
-Sqlite - Internal Device storage
-Bootstrap - For admin
+Ionic - The web framework used<br/>
+MySql - Admin Db<br/>
+Sqlite - Internal Device storage<br/>
+Bootstrap - For admin<br/>
 
 **Authors**
-Heli Isohätälä,
-Joona Keskitalo, 
-Niran Manandhar,
-Mariia Bogdanova
+Heli Isohätälä,<br/>
+Joona Keskitalo, <br/>
+Niran Manandhar,<br/>
+Mariia Bogdanova<br/>
 
